@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/kg-makes-you-stronger" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --hot:#FF6EB4;
+  --blush:#F5B8CF;
+  --pale:#FDF0F6;
+  --sage:#A8C5A0;
+  --sage-d:#7A9E72;
+  --mint:#D4EAD0;
+  --cream:#FAF9F5;
+  --white:#FFFFFF;
+  --ink:#4E342E;
+  --muted:#7B6A62;
+  --border:#E8E2DB;
+}
+
+html{scroll-behavior:smooth;}
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+.star { pointer-events: none; flex-shrink: 0; }
+
+/*NAV*/
+nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(250,249,245,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1.5px solid var(--mint);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.4rem 3rem;
+}
+.nav-logo {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic; font-size: 1.5rem; font-weight: 400;
+  color: var(--ink); text-decoration: none; letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--sage-d); }
+.nav-links { display: flex; gap: 2.8rem; align-items: center; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.22em; 
+  color: var(--muted); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage-d); }
+.nav-cta {
+  background: var(--sage-d); color: #FFFFFF !important;
+  padding: 0.5rem 1.4rem; font-size: 0.58rem; letter-spacing: 0.18em;
+  text-transform: uppercase; font-family: 'Bricolage Grotesque', sans-serif;
+  text-decoration: none; display: inline-block; transition: background 0.2s;
+  border-radius: 50px;
+}
+.nav-cta:hover { background: var(--hot); }
+
+/*HOVER TILT FOR FILE.PNG*/
+.hero {
+  min-height: 80vh;
+  background: var(--white);
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  border-bottom: 2px solid var(--mint);
+  position: relative; overflow: hidden;
+}
+.hero-left {
+  padding: 2.5rem 3rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-right: 1.5px solid var(--mint);
+  position: relative; z-index: 2;
+}
+.hero-port {
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-size: clamp(5.5rem, 11vw, 10rem);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  color: var(--hot);
+  display: block;
+  user-select: none;
+}
+.hero-folio {
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-size: clamp(5.5rem, 11vw, 10rem);
+  line-height: 0.88;
+  color: var(--hot);
+  display: block;
+  user-select: none;
+}
+.hero-name {
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-style: normal;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--ink);
+  margin-top: -0.3rem;
+  letter-spacing: 0.02em;
+}
+.hero-typing-wrap {
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 0.5rem;
+  min-height: 1.6rem;
+}
+.typing-text {
+  color: var(--ink);
+  font-family: 'Times New Roman', serif;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  border-right: 2px solid var(--hot);
+  padding-right: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+.hero-btns { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+.btn-solid {
+  background: var(--ink); color: var(--white);
+  padding: 0.75rem 2rem; font-size: 0.6rem; letter-spacing: 0.15em;
+  text-transform: uppercase; border: none; cursor: pointer;
+  font-family: 'Bricolage Grotesque', sans-serif; border-radius: 50px;
+  text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s;
+}
+.btn-solid:hover { background: var(--sage-d); transform: translateY(-2px); }
+.btn-ghost {
+  border: 1.5px solid var(--blush); color: var(--hot);
+  padding: 0.75rem 2rem; font-size: 0.6rem; letter-spacing: 0.15em;
+  text-transform: uppercase; background: transparent; cursor: pointer;
+  font-family: 'Bricolage Grotesque', sans-serif; border-radius: 50px;
+  text-decoration: none; display: inline-block; transition: background 0.2s;
+}
+.btn-ghost:hover { background: var(--pale); }
+
+.hero-deco-bl {
+  position: absolute; bottom: -40px; left: -30px;
+  width: 260px; opacity: 0.18; z-index: 1; pointer-events: none;
+  transform: rotate(-15deg);
+}
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--pale);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 50% at 20% 30%, rgba(168,197,160,0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 45% at 75% 65%, rgba(255,110,180,0.2) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 55% 20%, rgba(212,234,208,0.4) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/*styled pink file container to tilt*/
+.hero-file-img {
+  width: 75%;
+  max-width: 360px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.hero-file-img:hover {
+  transform: scale(1.03) rotate(-4deg);
+}
+
+.hs { position: absolute; pointer-events: none; z-index: 3; }
+.hs.a { width: 90px;  top: 8%;    right: 6%;   opacity: 0.75; }
+.hs.b { width: 50px;  bottom: 12%; left: 8%;   opacity: 0.65; }
+.hs.c { width: 28px;  top: 38%;   left: 18%;   opacity: 0.45; }
+.hs.d { width: 18px;  bottom: 30%; right: 22%; opacity: 0.35; }
+
+/*SECTION BASE*/
+.section { padding: 3rem 2.5rem; position: relative; overflow: hidden; }
+.section.bg-white { background: var(--white); border-top: 1.5px solid var(--mint); }
+.section.bg-sage  { background: var(--mint);  border-top: 1.5px solid var(--sage); }
+
+.sec-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding-bottom: 0.8rem; border-bottom: 1.5px solid var(--mint); margin-bottom: 2rem;
+}
+.sec-left { display: flex; align-items: center; gap: 1rem; }
+
+.sec-num { 
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-size: 1.4rem; 
+  color: #4E342E; 
+}
+
+.sec-title {
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-size: 1.8rem; 
+  font-weight: 400; 
+  color: var(--ink);
+}
+.sec-title em { font-style: normal; color: var(--hot); }
+
+.sec-link {
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border);
+  padding-bottom: 2px; transition: color 0.2s, border-color 0.2s;
+}
+.sec-link:hover { color: var(--sage-d); border-color: var(--sage); }
+
+#contact .sec-num,
+#contact .sec-title {
+  color: var(--white);
+}
+
+/*GRID*/
+.work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+.work-card {
+  background: var(--white); border: 1.5px solid var(--mint);
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  text-decoration: none; color: inherit; display: block;
+  border-radius: 4px;
+}
+.work-card:hover {
+  border-color: var(--blush); transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255,110,180,0.12);
+}
+.card-img {
+  aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem; position: relative; overflow: hidden;
+  background: var(--white);
+}
+.card-img img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.card-foot { padding: 1rem 1.2rem; border-top: 1.5px solid var(--mint); }
+.card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; font-weight: 400; color: var(--ink);
+}
+.card-type { font-size: 0.55rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 2px; font-weight: 400; }
+.card-arrow { font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blush); margin-top: 0.6rem; display: block; transition: color 0.2s; }
+.work-card:hover .card-arrow { color: var(--hot); }
+
+/*MODAL*/
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(26,26,26,0.7); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--white); max-width: 740px; width: 92vw;
+  max-height: 90vh; overflow-y: auto;
+  transform: translateY(28px); transition: transform 0.3s;
+  position: relative; border-radius: 6px;
+  border: 1.5px solid var(--mint);
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute; top: 1.2rem; right: 1.4rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif; transition: color 0.2s;
+}
+.modal-close:hover { color: var(--hot); }
+.modal-header {
+  padding: 2.5rem 2.5rem 2rem; border-bottom: 1.5px solid var(--mint);
+  display: flex; align-items: flex-start; gap: 1.8rem;
+}
+.modal-logo-wrap {
+  width: 76px; flex-shrink: 0;
+  border: 1.5px solid var(--mint); padding: 0.7rem;
+  background: var(--cream); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-logo-wrap img { width: 100%; height: auto; object-fit: contain; }
+.modal-title { font-family: 'Bricolage Grotesque', serif; font-style: italic; font-size: 2rem; color: var(--ink); line-height: 1; }
+.modal-subtitle { font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage-d); margin-top: 0.5rem; display: block; }
+.modal-body { padding: 2rem 2.5rem; }
+.modal-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+.modal-gallery-item {
+  aspect-ratio: 4/3; border: 1.5px solid var(--mint); border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--cream); overflow: hidden;
+}
+.modal-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+.modal-desc { font-size: 0.88rem; line-height: 2; color: var(--muted); margin-bottom: 1.8rem; }
+.modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.modal-tag {
+  background: var(--mint); border: 1px solid var(--sage);
+  color: var(--sage-d); font-size: 0.48rem; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 50px;
+  object-fit: contain;
+}
+
+/*TIMELINE*/
+.timeline { display: flex; flex-direction: column; gap: 0.5rem; }
+.tl-item {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 2rem; padding: 0.8rem 0; border-bottom: 1.5px solid var(--mint); align-items: center;
+}
+.tl-role { font-family: 'Bricolage Grotesque', serif; font-size: 1.4rem; margin-bottom: 0.1rem; font-weight: 400; color: var(--ink); }
+.tl-org { font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;font-weight:400 ;color: #7A9E72; margin-bottom: 0.4rem; font-weight: 500; }
+.tl-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.2rem; }
+.tl-bullets li { font-size: 0.82rem; line-height: 1.6; color: var(--muted); padding-left: 1rem; position: relative; }
+.tl-bullets li::before { content: '◦'; position: absolute; left: 0; color: var(--sage); }
+.tl-tag { display: inline-block; margin-top: 0.5rem; background: var(--mint); border: 1px solid var(--sage); color: var(--sage-d); font-size: 0.48rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 50px; margin-right: 5px; }
+.tl-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.4rem; min-width: 140px; }
+.tl-date { font-size: 0.56rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-align: right; white-space: nowrap; font-weight: 500; }
+.logo-ph { width: 40px; height: 40px; border: 1.5px dashed var(--blush); border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 0.36rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blush); text-align: center; }
+
+/*ABOUT*/
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+.about-image-box {
+  border-radius: 16px; overflow: hidden; border: 1px solid var(--mint); margin-bottom: 1rem; max-width: 90%;
+}
+.about-image-box img { width: 100%; display: block; }
+.about-right { display: flex; flex-direction: column; gap: 1rem; }
+.about-block-label {font-size: 0.67rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); font-weight: bold; margin-bottom: 0.4rem; display: block; }
+.lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.lang-item { background: var(--white); border: 1.5px solid var(--mint); padding: 0.6rem 0.8rem; border-radius: 3px; }
+.lang-name { font-family: 'Bricolage Grotesque', serif; font-size: 1.15rem; color: var(--ink); font-weight: 400; }
+.lang-level { font-size: 0.46rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; display: block; }
+
+.tech-icons { display: flex; flex-wrap: wrap; gap: 0.97rem; align-items: center; }
+.tech-icons img { width: 36px; height: 36px; object-fit: contain; opacity: 0.82; transition: transform 0.25s ease, opacity 0.25s ease; }
+.tech-icons img:hover { transform: translateY(-3px) scale(1.05); opacity: 1; }
+
+.interest-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.interest-pill { background: #FFE6F0; color: #C05A87; padding: 0.35rem 0.8rem; border-radius: 999px; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid #F5B8CF; font-weight: 500; }
+
+/*CONTACT*/
+.contact-section {
+  position: relative;
+  background-color: var(--white);
+  background-image: url('5121cf5006d4749187c2d66b683d3294.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 4rem 2.5rem;
+  border-top: 1.5px solid var(--mint);
+}
+.contact-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: transparent;
+  backdrop-filter: none;
+  z-index: 1;
+}
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.contact-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(168,197,160,0.45);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 680px;
+}
+.contact-card:hover {
+  transform: rotateX(2deg) rotateY(-2deg) translateY(-4px);
+  box-shadow: 0 25px 65px rgba(255,110,180,0.22);
+}
+.card-shine {
+  position: absolute; inset: -100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+  transform: rotate(25deg); animation: shine 6s infinite linear;
+}
+@keyframes shine { 0% { transform: translateX(-100%) rotate(25deg); } 100% { transform: translateX(100%) rotate(25deg); } }
+
+.contact-card-left { flex: 1; }
+.contact-card-right { width: 150px; height: 180px; overflow: hidden; border-radius: 20px; flex-shrink: 0; }
+.contact-card-right img { width: 100%; height: 100%; object-fit: cover; }
+
+.mini-label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: #A1887F; font-weight: 500; }
+.contact-card h2 {
+  font-family: 'KG Makes You Stronger', sans-serif;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin: 0.4rem 0 0.8rem;
+  color: #4E342E;
+  font-weight: 400;
+}
+.card-info { display: flex; flex-direction: column; gap: 0.6rem; }
+.card-info a { text-decoration: none; color: #6F5B53; font-size: 0.9rem; letter-spacing: 0.02em; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 400; transition: opacity 0.2s; }
+.card-info a:hover { opacity: 0.6; }
+.contact-links { display: flex; gap: 1.2rem; margin-top: 1.2rem; }
+.contact-links a { text-decoration: none; color: #8B5E3C; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; }
+
+/*FOOTER*/
+footer { border-top: 1px solid #2a2a2a; padding: 1.4rem 2.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.52rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--ink); color: rgba(255,255,255,0.28); }
+.footer-dots { display: flex; gap: 5px; }
+.fd { width: 5px; height: 5px; border-radius: 50%; background: var(--hot); opacity: 0.4; }
+
+.reveal { opacity: 0; transform: translateY(15px); transition: opacity 0.6s, transform 0.6s; }
+.reveal.on { opacity: 1; transform: none; }
+
+#work { 
+  background-image: url('workbg.png'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { min-height: 40vh; border-top: 1.5px solid var(--mint); }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .tl-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .tl-right { flex-direction: row; align-items: center; justify-content: space-between; }
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { gap: 1.2rem; }
+  .section { padding: 2.5rem 1.5rem; }
+  .contact-card { flex-direction: column-reverse; gap: 1.5rem; padding: 1.5rem; }
+  .contact-card-right { width: 100%; height: 160px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">✦<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <span class="hero-port">Port</span>
+      <span class="hero-folio">folio</span>
+    </div>
+    <div class="hero-name">Nazla Chy</div>
+    <div class="hero-typing-wrap">
+      <span class="typing-text" id="typer"></span>
+    </div>
+    <div class="hero-btns">
+      <a href="#work" class="btn-solid">View My Work</a>
+      <a href="#contact" class="btn-ghost">Get In Touch</a>
+    </div>
+    <svg class="hero-deco-bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <polygon fill="#FF6EB4" points="100,2 108,68 148,22 116,78 180,68 130,104 188,126 126,134 164,184 106,160 108,198 92,160 36,184 74,134 12,126 70,104 20,68 84,78 52,22 92,68"/>
+    </svg>
+  </div>
+  <div class="hero-right">
+    <svg class="hs a" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><polygon fill="#FF6EB4" points="100,2 108,68 148,22 116,78 180,68 130,104 188,126 126,134 164,184 106,160 108,198 92,160 36,184 74,134 12,126 70,104 20,68 84,78 52,22 92,68"/></svg>
+    <svg class="hs b" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><polygon fill="#A8C5A0" points="100,2 108,68 148,22 116,78 180,68 130,104 188,126 126,134 164,184 106,160 108,198 92,160 36,184 74,134 12,126 70,104 20,68 84,78 52,22 92,68"/></svg>
+    
+    <img src="file.png" alt="File Showcase" class="hero-file-img">
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="sec-head reveal">
+    <div class="sec-left">
+      <span class="sec-num">01 //</span>
+      <h2 class="sec-title">Selected Work</h2>
+    </div>
+    <a href="https://github.com/mimixp3" target="_blank" class="sec-link">GitHub ↗</a>
+  </div>
+
+  <div class="work-grid reveal">
+    
+    <div class="work-card" onclick="openModal('neuromap')">
+      <div class="card-img">
+        <img src="neuromap.png" alt="NeuroMap Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">NeuroMap</div>
+        <div class="card-type">Biomimetic AI · Sustainable Systems</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openModal('colab')">
+      <div class="card-img">
+        <img src="colab-icon.png" alt="CoLab Game Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">CoLab (Game Dev)</div>
+        <div class="card-type">Interactive Coding · Game Asset Design</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openModal('nibble')">
+      <div class="card-img">
+        <img src="nibble.png" alt="Nibble Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">Nibble</div>
+        <div class="card-type">App Design · Figma · Food Tech</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openModal('hospital')">
+      <div class="card-img">
+        <img src="hospital.png" alt="Hospital ER System Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">Hospital ER System</div>
+        <div class="card-type">UI/UX · Healthcare · Design</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openModal('aether')">
+      <div class="card-img">
+        <img src="aether.png" alt="AETHER Device Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">AETHER</div>
+        <div class="card-type">IoT · Robotics · Environmental Safety</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openModal('ecotrack')">
+      <div class="card-img">
+        <img src="ecotrack.png" alt="EcoTrack Waste Sorting Preview">
+      </div>
+      <div class="card-foot">
+        <div class="card-name">EcoTrack</div>
+        <div class="card-type">AI/ML · CNN Image Classification</div>
+        <span class="card-arrow">View Project →</span>
+      </div>
+    </div>
+
+  </div> </section>
+
+<section class="section bg-white" id="experience">
+  <div class="sec-head reveal">
+    <div class="sec-left">
+      <span class="sec-num">02 //</span>
+      <h2 class="sec-title">Experience &amp; Research</h2>
+    </div>
+  </div>
+
+  <div class="timeline reveal">
+
+  <div class="tl-item">
+      <div class="tl-content">
+        <div class="tl-role">Founder &amp; President</div>
+        <div class="tl-org">CoLab Student Association Canadian University Dubai</div>
+        <ul class="tl-bullets">
+          <li>Launched cross-major innovation hub with 30+ members in under a week.</li>
+          <li>Organised 3 events since Jan 2026; facilitated 6+ cross-disciplinary projects.</li>
+        </ul>
+        <span class="tl-tag">Leadership</span><span class="tl-tag">Community</span>
+      </div>
+        <div class="tl-right">
+        <div class="tl-date">Aug 2026-Present</div>
+      </div>
+    </div>
+
+  
+    <div class="tl-item">
+      <div class="tl-content">
+        <div class="tl-role">Lead Researcher &amp; Innovator</div>
+        <div class="tl-org">Sustainable AI Systems - NeuroMap</div>
+        <ul class="tl-bullets">
+          <li>Prototyped a biomimetic AI training framework inspired by human associative thinking.</li>
+          <li>Achieved &gt;99.7% reduction in energy and water use vs. conventional training.</li>
+        </ul>
+        <span class="tl-tag">AI/ML</span><span class="tl-tag">Python</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">Jun 2026-Present</div>
+      </div>
+    </div>
+
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <div class="tl-role">Data Analytics &amp; Project Lead</div>
+        <div class="tl-org">China Home Life - INTEX</div>
+        <ul class="tl-bullets">
+          <li>Managed 1.5k+ company list; analysed data from 300+ companies using Excel.</li>
+          <li>Surpassed registration goals by 202%, generating AED 7.5K+ revenue.</li>
+        </ul>
+        <span class="tl-tag">Data Analytics</span><span class="tl-tag">Excel</span>
+      </div>
+      <div class="tl-right">
+        <div class="tl-date">Sep-Dec 2024</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-content">
+        <div class="tl-role">Operational Intern - Front Office, Cross Training - IT</div>
+        <div class="tl-org">Waldorf Astoria Dubai International Financial Centre - Hilton</div>
+        <ul class="tl-bullets">
+          <li>Ensured seamless experiences for 300+ guests weekly; achieved 10+ consecutive 5 star ratings</li>
+          <li>Handled employee access, SOX compliance, and operational checklists in cross training</li>
+          <li>Handled daily guest reports and curated excel reports; salesforce used for daily guest relation management</li>
+          <li>Supported DIOR event coordination and amenities for Dubai Fashion Week in Personal Concierge</li>
+        </ul>
+        <span class="tl-tag">Front Office</span><span class="tl-tag">IT</span><span class="tl-tag">DFW</span><span class="tl-tag">Personal Concierge</span>
+      </div>
+      <div class="tl-right">
+      <div class="tl-date">Aug 2023-Feb 2024</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="sec-head reveal">
+    <div class="sec-left">
+      <span class="sec-num">03 //</span>
+      <h2 class="sec-title">About Me</h2>
+    </div>
+  </div>
+  <div class="about-grid reveal">
+    
+    <div>
+      <div class="about-bio" style="margin-bottom: 2rem;">
+        <p style="font-size: 0.95rem; line-height: 1.8; color: var(--muted); font-family: 'Bricolage Grotesque', sans-serif;">
+          I am a student based in Dubai and studying Computer Science at Canadian University Dubai.
+          I like working on a mix of things, particularly robotics, biomimetic design, interactive art, fashion-tech and most of all sustainability and am drawn to projects that feel useful and exciting, whether it’s building prototypes or rethinking how tech fits into everyday life.
+        </p>
+      </div>
+
+      <span class="about-block-label">Systems & Technical Expertise</span>
+      <div class="skills-range-container" style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 0.5rem;">
+        
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A9E72; font-weight: bold; display: block; margin-bottom: 0.4rem;">Productivity & Analytics</span>
+          <div class="tech-icons">
+            <img src="salesforce.png" alt="Salesforce" title="Salesforce">
+            <img src="ppt.png" alt="PowerPoint" title="PowerPoint">
+            <img src="excel.png" alt="Excel" title="Excel">
+            <img src="notion.png" alt="Notion" title="Notion">
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A9E72; font-weight: bold; display: block; margin-bottom: 0.4rem;">Programming Languages & Hardware</span>
+          <div class="tech-icons">
+            <img src="python.png" alt="Python" title="Python">
+            <img src="java.png" alt="Java" title="Java">
+            <img src="html.png" alt="HTML" title="HTML">
+            <img src="css.png" alt="CSS" title="CSS">
+            <img src="cplusplus.png" alt="C++" title="C++">
+            <img src="swift.png" alt="Swift" title="Swift">
+            <img src="arduino.png" alt="Arduino" title="Arduino">
+            <img src="raspberrypi.png" alt="Raspberry Pi" title="Raspberry Pi">
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A9E72; font-weight: bold; display: block; margin-bottom: 0.4rem;">UI/UX, Product Design & Prototyping</span>
+          <div class="tech-icons">
+            <img src="tinkercad.png">
+            <img src="figma.png" alt="Figma" title="Figma">
+            <img src="framer.png" alt="Framer" title="Framer">
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7A9E72; font-weight: bold; display: block; margin-bottom: 0.4rem;">Version Control & IDE</span>
+          <div class="tech-icons">
+            <img src="github.png" alt="GitHub" title="GitHub">
+            <img src="vscode.png" alt="VS Code" title="VS Code">
+          </div>
+        </div>
+
+      </div>
+    </div> <div class="about-right">
+      <div style="margin-bottom: 1.5rem;">
+        <span class="about-block-label">Education</span>
+        <div style="background: var(--white); border: 1.5px solid var(--mint); padding: 0.8rem 1.2rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; color: var(--ink); font-weight: 500;">B.S. Computer Science</div>
+            <span style="font-size: 0.52rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-top: 2px;">Canadian University Dubai</span>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--hot); line-height: 1;">3.92</span>
+          </div>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 1.5rem;">
+        <span class="about-block-label">Languages</span>
+        <div class="lang-grid">
+          <div class="lang-item"><div class="lang-name">Arabic</div><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><div class="lang-name">English</div><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><div class="lang-name">Bengali</div><span class="lang-level">Fluent</span></div>
+          <div class="lang-item"><div class="lang-name">Hindi / Urdu</div><span class="lang-level">Fluent</span></div>
+        </div>
+      </div>
+      
+      <div>
+        <span class="about-block-label">Interests</span>
+        <div class="interest-pills">
+          <span class="interest-pill">Fashion Design</span>
+          <span class="interest-pill">Sustainable Technology</span>
+          <span class="interest-pill">AI &amp; Biomimetics</span>
+          <span class="interest-pill">Creative Coding</span>
+        </div>
+      </div>
+    </div> 
+  </div> 
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="sec-head reveal">
+    <div class="sec-left">
+      <span class="sec-num">04 //</span>
+      <h2 class="sec-title">Get In Touch</h2>
+    </div>
+  </div>
+  
+  <div class="contact-container reveal">
+    <div class="contact-card">
+      <div class="card-shine"></div>
+      
+      <div class="contact-card-left">
+        <span class="mini-label">Portfolio Contact</span>
+        <h2>Nazla Chy</h2>
+        <div class="card-info">
+          <a href="mailto:nazla55813@gmail.com" style="display: block; margin-bottom: 0.4rem;">nazla55813@gmail.com</a>
+          <a href="tel:+971508772018" style="display: block; margin-bottom: 1.2rem;">+971 50 877 2018</a>
+          
+          <div class="contact-links" style="display: flex; gap: 1.5rem; margin-top: 0.5rem;">
+            <a href="https://github.com/mimixp3" target="_blank" style="color: #8B5E3C; font-weight: 500; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.15em;">GitHub ↗</a>
+            <a href="https://linkedin.com/in/nazla-chy-7880b1294" target="_blank" style="color: #8B5E3C; font-weight: 500; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.15em;">LinkedIn ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-card-right">
+        <img src="contact.png" alt="Nazla Chy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal(null, true)">Close ✕</button>
+    <div class="modal-header">
+      <div class="modal-logo-wrap">
+        <img id="modalLogo" src="" alt="Project Logo">
+      </div>
+      <div>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        <span class="modal-subtitle" id="modalSubtitle">Project Subtitle</span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-gallery" id="modalGallery"></div>
+      <p class="modal-desc" id="modalDescription">Detailed information about the project goes here.</p>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Nazla Chy</span>
+  <div class="footer-dots"><div class="fd"></div><div class="fd"></div><div class="fd"></div></div>
+  <span></span>
+</footer>
+
+<script>
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); revObs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+revEls.forEach(e => revObs.observe(e));
+
+const phrases = [
+  'I am a Software Engineer',
+  'I am a Sustainable Systems Advocate',
+  'I am a UX/UI Designer'
+];
+let pi = 0, ci = 0, deleting = false;
+const typer = document.getElementById('typer');
+
+function type() {
+  const phrase = phrases[pi];
+  if (!deleting) {
+    typer.textContent = phrase.slice(0, ci + 1);
+    ci++;
+    if (ci === phrase.length) { deleting = true; setTimeout(type, 1600); return; }
+    setTimeout(type, 68);
+  } else {
+    typer.textContent = phrase.slice(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 300); return; }
+    setTimeout(type, 38);
+  }
+}
+type();
+
+const projectData = {
+  neuromap: {
+    title: "NeuroMap",
+    subtitle: "Biomimetic AI · Sustainable Systems",
+    logo: "neuromap.png",
+    desc: "NeuroMap is an innovative biomimetic AI training framework designed to replicate human associative thinking patterns. Unlike resource-heavy conventional AI engines, NeuroMap prioritizes maximum processing capabilities alongside sustainable optimization, engineering a drastic reduction in computational waste.",
+    tags: ["AI/ML", "Python", "Hebbian Learning", "Tensorflow", "Biomimetics", "Sustainability"]
+  },
+  colab: {
+    title: "CoLab Season I & II",
+    subtitle: "Interactive Coding · Game Design",
+    logo: "colab-icon.png",
+    desc: "Two experimental gaming seasons for CoLab association launched in January 2026. The first season is a lower level beta interactive gaming concept showcasing creative gameplay logic alongside optimized UI frameworks. Season 2 has new and improved features and tracks interactive gamified configurations compiled directly inside creative frontend layouts!",
+    tags: ["Game Design", "HTML", "Creative Coding", "JavaScript", "CSS"],
+    links: [
+      {label:"Season 1",url: "https://mimixp3.github.io/CoLab-archives/colab-hub.html"},
+      {label:"Season 2",url:"https://mimixp3.github.io/Colab-Chambers/chamber-hub.html"}
+    ]
+  },
+
+  nibble: {
+    title: "Nibble",
+    subtitle: "App Design · Food Tech · Figma",
+    logo: "nibble.png",
+    desc: "Nibble transforms the intersection of smart nutrition planning and user interfaces. Below we also have a minigame link! The prototype mock ups above shows clean visual architectures alongside interactive features aimed at removing friction from dietary management. This project was done to connect businesses with surplus food to consumers who are looking for premium quality food on a budget! It aims to reduce waste and creates a zero waste cycle through its auto donation feature when food still remains",
+    tags: ["Figma", "UI/UX", "Product Design", "Framer"],
+    images: ["nibble-mobile.png", "nibble-web.png"],
+    links: [{label: "GitHub", url: "https://mimixp3.github.io/nibble-box/nibble-menu.html"}]
+  },
+  hospital: {
+    title: "Hospital ER System",
+    subtitle: "UI/UX · Healthcare · Design",
+    logo: "hospital.png",
+    desc: "This project automates medical triage by analyzing user flows across clinicians and operations staff, the UI concept simplifies multi-tiered incoming alerts to optimize clinical accuracy, reduce burnout, and increase response reliability. The patients are triaged in order of severity and the system features a Dashboard, Queue, Registry, Registration Form and Statistics page!",
+    tags: ["Figma", "Canva","UI/UX Design", "Wireframing", "Healthcare Tech"],
+    images: ["h1.png", "h2.png", "h3.png", "h4.png", "h5.png"],
+    links: [{label: "GitHub", url: "https://github.com/mimixp3/HospitalER"}] 
+  },
+
+  aether: {
+    title: "AETHER",
+    subtitle: "IoT · Robotics · Environmental Safety Device",
+    logo: "aether-logo.png",
+    desc: "AETHER is an advanced, smart IoT safety companion engineered specifically for laboratory and soldering environments. Built using custom hardware controller logic, the device integrates intelligent temperature calibration, ambient light checking, and real-time gas sensor micro-thresholds to actively track and maintain environmental air quality safety before toxins build up.",
+    tags: ["IoT", "Arduino", "Robotics","TinkerCAD", "Hardware Architecture", "Sensors", "Sustainability"],
+    links: [{label: "View Hardware Logic", url: "https://github.com/mimixp3/AETHER"}]
+  },
+
+  ecotrack: {
+    title: "EcoTrack",
+    subtitle: "CNN Image Classification · Waste Management System",
+    logo: "ecotrack.png",
+    desc: "EcoTrack is a Convolutional Neural Network (CNN) based waste classification system which was trained and achieved 99.07% sorting accuracy across multiple waste material categories. It is designed to reduce contamination rates in recycling streams and contribute to measurable CO₂ emission reductions at scale. The hardware aspects are currently under construction",
+    tags: ["AI/ML", "Python", "Hebbian Learning", "Tensorflow", "Biomimetics", "Sustainability"],
+    links: [{label: "GitHub", url: "https://github.com/mimixp3/CNN-based-waste-sorting"}]
+  }
+};
+
+function openModal(id) {
+  const data = projectData[id];
+  if (!data) return;
+
+  // 1. Set textual content (Using the correct 'modalDescription' ID from your HTML)
+  document.getElementById('modalTitle').textContent = data.title;
+  document.getElementById('modalSubtitle').textContent = data.subtitle;
+  document.getElementById('modalDescription').textContent = data.desc;
+
+  // 2. Set the modal logo cleanly
+  const modalLogo = document.getElementById('modalLogo');
+  if (data.logo) {
+    modalLogo.src = data.logo;
+    modalLogo.alt = `${data.title} Logo`;
+    modalLogo.parentElement.style.display = "flex";
+  } else {
+    modalLogo.parentElement.style.display = "none";
+  }
+
+  // 3. Handle tags
+  const tagsContainer = document.getElementById('modalTags');
+  tagsContainer.innerHTML = '';
+  data.tags.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'modal-tag';
+    span.textContent = t;
+    tagsContainer.appendChild(span);
+  });
+
+  // 4. Reset layout display type and build media gallery
+  const galleryContainer = document.getElementById('modalGallery');
+  galleryContainer.innerHTML = '';
+  galleryContainer.style.display = "grid"; // Reset to grid so it never stays hidden!
+
+  if (data.images && data.images.length > 0) {
+    data.images.forEach((imgSrc, index) => {
+      const item = document.createElement('div');
+      item.className = 'modal-gallery-item';
+      item.innerHTML = `
+        <a href="${imgSrc}" target="_blank" title="Click to view full image">
+          <img src="${imgSrc}" alt="${data.title} Mockup ${index + 1}" style="cursor: pointer; width: 100%; height: 100%; object-fit: contain;">
+        </a>
+      `;
+      galleryContainer.appendChild(item);
+    });
+  } else if (data.links && data.links.length > 0) {
+    data.links.forEach(link => {
+      const btn = document.createElement('a');
+      btn.href = link.url;
+      btn.target = "_blank";
+      btn.textContent = link.label;
+      btn.className = "btn-solid";
+      btn.style.display = "inline-block";
+      btn.style.marginRight = "10px";
+      btn.style.textAlign = "center";
+      galleryContainer.appendChild(btn);
+    });
+  } else {
+    galleryContainer.style.display = "none";
+  }
+
+  // 5. Open the modal overlay smoothly
+  document.getElementById('projectModal').classList.add('open');
+}
+
+function closeModal(event, force = false) {
+  // Fixes overlay click logic and button targets cleanly
+  if (force || (event && event.target === document.getElementById('projectModal'))) {
+    document.getElementById('projectModal').classList.remove('open');
+  }
+}
+
+
+</script>
+</body>
+</html>
